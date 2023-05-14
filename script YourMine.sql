@@ -36,6 +36,19 @@ vinte_cores int,
 FKcadastro int, foreign key (FKcadastro) references cadastro(idCadastro)
 );
 
+create table analise_serve(
+idAnalise_serve int primary key auto_increment,
+Hypixel int,
+Mc_Central int,
+CubeCraft int,
+Hylex Int,
+CraftLandia int,
+RedeSky int,
+Mush int,
+FKcadastro int, foreign key (FKcadastro) references cadastro(idCadastro)
+);
+
+
 
 
 
