@@ -2,53 +2,35 @@ create database YourMine;
 
 use YourMine;
 
+create table analise_serve(
+idAnalise_serve int primary key auto_increment,
+servidores Varchar(45)
+);
+
 create table cadastro(
 idCadastro int primary key auto_increment,
 email varchar(45),
 nome varchar(45),
 sobrenome varchar(45),
-nick varchar(45)
+nick varchar(45),
+senha varchar(45),
+FKanalise int, foreign key	(FKanalise) references analise_serve(idAnalise_serve)
 );
 
-create table quiz1(
-idAnalystc int primary key auto_increment,
-picareta_de_ouro int,
-picareta_de_pedra int,
-picareta_de_madeira int,
-FKcadastro int, foreign key (FKcadastro) references cadastro(idCadastro)
-);
+insert into analise_serve values 
+	(null, 'Hypixel'),
+	(null, 'MC central'),
+	(null, 'CubeCraft'),
+	(null, 'Hylex'),
+	(null, 'CraftLandia'),
+	(null, 'RedeSky'),
+	(null, 'Mush');
 
-create table quiz2(
-idAnalystc2 int primary key auto_increment,
-vinte_e_quatro_blocos int,
-vinte_blocos int,
-vinte_e_nove_blocos int,
-quinze_blocos int,
-FKcadastro int, foreign key (FKcadastro) references cadastro(idCadastro)
-);
+select * from cadastro;
 
-create table quiz3(
-idAnalystc3 int primary key auto_increment,
-dezesseis_cores int,
-dez_cores int,
-onze_cores int,
-vinte_cores int,
-FKcadastro int, foreign key (FKcadastro) references cadastro(idCadastro)
-);
-
-create table analise_serve(
-idAnalise_serve int primary key auto_increment,
-Hypixel int,
-Mc_Central int,
-CubeCraft int,
-Hylex Int,
-CraftLandia int,
-RedeSky int,
-Mush int,
-FKcadastro int, foreign key (FKcadastro) references cadastro(idCadastro)
-);
-
-
-
+select count(cadastro.FKanalise) as voto, analise_serve.servidores as servidor 
+	from cadastro join analise_serve
+		on analise_serve.idAnalise_serve = cadastro.FKanalise
+			group by cadastro.FKanalise;
 
 
