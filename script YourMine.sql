@@ -17,6 +17,13 @@ senha varchar(45),
 FKanalise int, foreign key	(FKanalise) references analise_serve(idAnalise_serve)
 );
 
+create table usuario(
+idUsuario int primarY key auto_increment,
+nome varchar(45),
+FKcadastro int, foreign key (FKcadastro) references cadastro(idCadastro),
+FKanalise int, foreign key (FKanalise) references analise_serve(idAnalise_serve)
+);
+
 insert into analise_serve values 
 	(null, 'Hypixel'),
 	(null, 'MC central'),
